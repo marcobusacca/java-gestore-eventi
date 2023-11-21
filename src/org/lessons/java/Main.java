@@ -84,9 +84,6 @@ public class Main {
 				}
 			}
 			
-			// AGGIUNGO L'EVENTO CREATO ALLA LISTA EVENTI DELLA CLASSE "ProgrammEventi"
-			p.aggiungiEvento(ev);
-			
 			
 			System.out.println("\n" + ev);
 			
@@ -155,9 +152,13 @@ public class Main {
 			System.out.println("\nPosti prenotati: " + ev.getPostiPrenotati() + "/" + ev.getPostiTotali());
 			System.out.println("Posti disponibili: " + (ev.getPostiTotali() - ev.getPostiPrenotati()) + "/" + ev.getPostiTotali());
 			
+			// AGGIUNGO L'EVENTO CREATO ALLA LISTA EVENTI DELLA CLASSE "ProgrammEventi"
+			p.aggiungiEvento(ev);
+			
 			// CHIEDO ALL'UTENTE SE VUOLE INSERIRE UN ALTRO EVENTO
 			System.out.print("\nVuoi inserire un altro evento? (si | no): ");
 			String finalChoiche = in.nextLine().toLowerCase();
+			
 			
 			// SE L'UTENTE HA SCELTO "NO", INTERROMPO IL CICLO WHILE
 			if (finalChoiche.equals("no")) {
