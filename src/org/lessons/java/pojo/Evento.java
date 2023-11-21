@@ -82,19 +82,19 @@ public class Evento {
 		
 		setPostiPrenotati(getPostiPrenotati() - 1);
 	}
-	
-	private String getDataFormattata(LocalDate data) {
+	protected String getDataFormattata() {
 		
 		DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
-		String dataFormattata = data.format(formatoData);
+		String dataFormattata = getData().format(formatoData);
 		
 		return dataFormattata;
 	}
 	
+	
 	@Override
 	public String toString() {
 		
-		return getDataFormattata(getData()) + " - " + getTitolo();
+		return getDataFormattata() + " - " + getTitolo();
 	}
 }

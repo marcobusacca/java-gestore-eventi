@@ -1,8 +1,11 @@
 package org.lessons.java;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
+import org.lessons.java.pojo.Concerto;
 import org.lessons.java.pojo.Evento;
 
 public class Main {
@@ -24,19 +27,53 @@ public class Main {
 		String strPostiTotali = in.nextLine();
 		int postiTotali = Integer.valueOf(strPostiTotali);
 		
+		// CHIEDO IL TIPO DI EVENTO ALL'UTENTE
+		System.out.print("Scegli il tipo di evento: (evento | concerto) ");
+		String typeChoice = in.nextLine().toLowerCase();
+		
 		// DICHIARO L'ISTANZA DELLA CLASSE EVENTO
 		Evento ev = null;
-		try {
+		
+		if (typeChoice.equals("concerto")) {
 			
-			// CREO L'ISTANZA DELLA CLASSE EVENTO
-			ev = new Evento(titolo, LocalDate.parse(data), postiTotali);
+			// CHIEDO L'ORARIO DEL CONCERTO
+			System.out.print("Inserisci l'orario del concerto (hh:mm): ");
+			String orario = in.nextLine();
 			
-		} catch (Exception e) {
+			// CHIEDO IL PREZZO DEL CONCERTO
+			System.out.print("Inserisci il prezzo del concerto (00.00): ");
+			String strPrezzo = in.nextLine();
+			BigDecimal prezzo = new BigDecimal(strPrezzo);
 			
-			System.out.println("Errore: " + e.getMessage());
-			in.close();
-			return;
+			try {
+				
+				// CREO L'ISTANZA DELLA CLASSE CONCERTO
+				ev = new Concerto(titolo, LocalDate.parse(data), postiTotali, LocalTime.parse(orario), prezzo);
+				
+			} catch (Exception e) {
+				
+				System.out.println("Errore: " + e.getMessage());
+				in.close();
+				return;
+			}
+			
+		} else {
+			
+			try {
+				
+				// CREO L'ISTANZA DELLA CLASSE EVENTO
+				ev = new Evento(titolo, LocalDate.parse(data), postiTotali);
+				
+			} catch (Exception e) {
+				
+				System.out.println("Errore: " + e.getMessage());
+				in.close();
+				return;
+			}
 		}
+		
+		
+		System.out.println("\n" + ev);
 		
 		
 		try {
