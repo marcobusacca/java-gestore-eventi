@@ -95,6 +95,6 @@ public class Evento {
 	@Override
 	public String toString() {
 		
-		return getDataFormattata() + " - " + getTitolo();
+		return getDataFormattata() + " - " + getTitolo() + " - " + getPostiPrenotati() + "/" + getPostiTotali();
 	}
 }
